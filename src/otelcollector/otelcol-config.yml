@@ -38,16 +38,15 @@ processors:
   batch:
 
 connectors:
-  spanmetrics:
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp, debug, spanmetrics]
+      exporters: [otlp, debug]
     metrics:
-      receivers: [httpcheck/frontendproxy, redis, otlp, spanmetrics]
+      receivers: [httpcheck/frontendproxy, redis, otlp]
       processors: [batch]
       exporters: [otlphttp/prometheus, debug]
     logs:
